@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ceejay Salonga</title>
+    <link rel="icon" type="image/x-icon" href="profilepic.png" style="border-radius: 20px;">
+    <style>
+        /* Reset some default styles for better consistency */
+        body, h1, h2, p, ul, li {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            overflow-x: hidden;
+            background-image: url('background-pattern.jpg');
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.5s;
+        }
+
+        .top-bar {
+            position: relative;
+            background: linear-gradient(to bottom, #081e7e, #020b31, #040c31);
+            height: 200px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-icons {
+            position: absolute;
+            bottom: 20px;
+            right: 50px;
+            display: flex;
+        }
+
+        .social-icons a {
+            margin-left: 10px;
+        }
+
+        .social-icons img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .social-icons img:hover {
+            transform: scale(1.2);
+        }
+
+        .profile-image {
+            border-radius: 50%;
+            margin-right: 20px;
+            width: 150px;
+            height: 150px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.1);
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #333;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #292929;
+            line-height: 1.5;
+        }
+
+        /* Add some styling to the tabs */
+        .tabs {
+            position: relative;
+            display: flex;
+            justify-content: space-around;
+            background-color: #eee;
+            padding: 10px;
+            margin-top: 20px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .tab {
+            cursor: pointer;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .tab:hover {
+            background-color: #ddd;
+        }
+
+        .active-tab {
+            background-color: #333;
+            color: #fff;
+        }
+
+        /* Style the content sections */
+        .tab-content {
+            display: none;
+            margin-top: 20px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            animation: fade-in 0.5s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Slide animation styling */
+        .slide {
+            position: absolute;
+            height: 100%;
+            background-color: #041520;
+            border-radius: 5px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .slide-animation {
+            animation: slide 0.3s ease-in-out;
+        }
+
+        @keyframes slide {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(50%);
+            }
+        }
+
+        .cv-header {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 20px; 
+        }
+        .cv-header:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .contact-info {
+            margin-left: 50px;
+        }
+
+        .contact-info p {
+            margin: 5px 0;
+        }
+
+        .name {
+            color: #eee;
+            font-size: 50px;
+            font-weight: bold;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Add some hover effect to the content sections */
+        .tab-content:hover {
+            box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Add a subtle hover effect to the tabs */
+        .tab-content:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Update the hover effect for the active tab */
+        .active-tab:hover {
+            background-color: #333;
+        }
+
+        /* Additional styling for certifications and skills lists */
+        ul {
+            list-style-type: none;
+            margin-left: 20px;
+        }
+
+        ul li {
+            margin-bottom: 5px;
+        }
+
+        .certification-item {
+            margin-bottom: 15px;
+        }
+
+        /* Add some spacing to improve readability */
+        .content > * {
+            margin-bottom: 20px;
+        }
+
+        /* Update the background color on hover */
+        .tabs:hover {
+            background-color: #f4f4f4;
+        }
+
+        /* Add a subtle shadow on hover */
+        .tabs:hover {
+            box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Adjust the transition effect on hover */
+        .tabs:hover {
+            transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+        }
+
+        /* Add a border radius to the top bar */
+        .top-bar {
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        /* Add a transition effect to the background color of the body */
+        .tabs:hover ~ .content {
+            background-color: #f2f2f2;
+            transition: background-color 0.5s;
+        }
+        body {
+        background-color: #f8f8f8; /* Light gray background color */
+        transition: background-color 0.5s;
+        }
+
+        .content {
+            background-color: #fff; /* White background for the content section */
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .tabs {
+            background-color: #eee;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 20px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        /* Additional styling for the active tab and hover effects */
+        .active-tab {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .tabs:hover {
+            background-color: #f4f4f4;
+            box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+        }
+
+        .tabs:hover ~ .content {
+            background-color: #f2f2f2;
+            transition: background-color 0.5s;
+        }
+
+        /* Add a subtle border to the top bar */
+        .top-bar {
+            border-bottom: 3px solid #333;
+        }
+
+        /* Styling for the hobbies section */
+        .hobby-item {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .hobby-image {
+            max-width: 100%; /* Ensure images don't overflow their containers */
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        /* Add hover effect to hobby items */
+        .hobby-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        /* Adjust spacing for better readability */
+        .content > * {
+            margin-bottom: 20px;
+        }
+        .game-section {
+            display: flex;
+            flex-direction: row; /* Set layout to row for alternating format */
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            text-align: center;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 20px; 
+        }
+
+        .media-container {
+            max-width: 45%; /* Adjust the width of the video or photo container */
+            margin-left: 20px; /* Add spacing between text and video */
+        }
+
+        /* Clear styling for odd rows */
+        .game-section:nth-child(odd) {
+            flex-direction: row-reverse; /* Change layout to row-reverse for alternating format */
+        }
+
+        h3 {
+            margin-bottom: 10px; /* Add spacing between game name and video */
+        }
+        .work-item {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 20px;  
+        }
+        .work-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .school-item{
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 20px; 
+        }
+        .school-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .game-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+</style>
+
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <img class="profile-image" src="profilepic.png" alt="Ceejay Salonga">
+        <div class="name">
+            <header>Ceejay Salonga</header>
+        </div>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/ceejay.salonga.9" target="_blank"><img src="fblogo.png" alt="Facebook"></a>
+            <a href="https://twitter.com/ceejay_salonga" target="_blank"><img src="twitterlogo.png" alt="Twitter"></a>
+            <a href="https://www.linkedin.com/in/carlos-salonga-9645b3288/" target="_blank"><img src="linkedinlogo.png" alt="LinkedIn"></a>
+            <a href="https://github.com/CeejaySalonga" target="_blank"><img src="githublogo.png" alt="GitHub"></a>
+            <a href="https://www.youtube.com/channel/UCJpUeMNtXqAlKJ8W4qvHjpg" target="_blank"><img src="youtubelogo.png" alt="Youtube"></a>
+            <a href="https://discordapp.com/users/422006366320721952" target="_blank"><img src="discordlogo.png" alt="Discord"></a>
+        </div>
+    </div>
+
+    <div class="content">
+        <h1>Ceejay Salonga</h1>
+        <p>My name is Carlos Salonga Jr. but you can call me Ceejay. I'm a second-year I.T. student at National University Fairview.</p>
+        <div class="tabs">
+            <div class="tab active-tab" onclick="showTab('work')" role="tab" aria-selected="true">Professional</div>
+            <div class="tab" onclick="showTab('school')" role="tab">Academic</div>
+            <div class="tab" onclick="showTab('hobbies')" role="tab">Hobbies</div>
+            <div class="tab" onclick="showTab('gaming')" role="tab">Gaming</div>
+            <div class="slide"></div>
+        </div>
+        </div>
+
+        <div class="tab-content active" id="work-content" role="tabpanel">
+        <h2>Professional Background</h2>
+            <div class="cv-header">
+                <div class="contact-info">
+                    <h1>Carlos D. Salonga Jr.</h1>
+                    <p>Email: ceejaysalonga45@gmail.com</p>
+                    <p>Phone: +63 977 754 8714</p>
+                    <p>LinkedIn: <a href="https://www.linkedin.com/in/carlos-salonga-9645b3288/" target="_blank">linkedin.com/in/carlos-salonga</a></p>
+                    <p>GitHub: <a href="https://github.com/ceejaysalonga" target="_blank">github.com/ceejaysalonga</a></p>
+                    <p>Location: Caloocan, Philippines</p>
+                </div>
+            </div>
+            <div class="work-item">
+            <h2>Professional Summary</h2>
+            <p>
+                My name is Carlos Salonga Jr., commonly known as Ceejay. I am a second-year I.T. student at National University Fairview.<br>
+                Although I have not yet gained formal work experience, I possess a strong foundation in various programming languages and technologies.
+            </p>
+            </div>
+            <div class="work-item">
+            <h2>Skills</h2>
+            <ul>
+                <li>Communication</li>
+                <li>Git</li>
+                <li>Bootstrap (Framework)</li>
+                <li>JavaScript</li>
+                <li>Cascading Style Sheets (CSS)</li>
+                <li>HTML5</li>
+                <li>SQL</li>
+                <li>Microsoft PowerPoint</li>
+                <li>Microsoft Office</li>
+                <li>Microsoft Word</li>
+                <li>Microsoft Excel</li>
+                <li>Java</li>
+                <li>Python (Programming Language)</li>
+                <li>English</li>
+            </ul>
+            </div>
+            <div class="work-item">
+            <h2>Certifications</h2> 
+            <ul>
+                <li>
+                    <strong>Oracle Cloud Data Management 2023 Foundations Associate</strong>
+                    <br>
+                    Issued by Oracle, Aug 2023 · Expires Aug 2025
+                </li>
+                <li>
+                    <strong>Oracle Cloud Infrastructure 2023 Foundations Associate</strong>
+                    <br>
+                    Issued by Oracle, Aug 2023 · Expires Aug 2025
+                </li>
+                <li>
+                    <strong>Excel: Tips and Tricks</strong>
+                    <br>
+                    Issued by Linkedin Learning, Oct 2022 · Expires Oct 2024
+                </li>
+                <li>
+                    <strong>PowerPoint Essential Training (Office 365/Microsoft 365) (2020)</strong>
+                    <br>
+                    Issued by Linkedin Learning, Oct 2022 · Expires Oct 2024
+                </li>
+                <li>
+                    <strong>PowerPoint Tips And Tricks</strong>
+                    <br>
+                    Issued by Linkedin Learning, Oct 2022
+                </li>
+                <li>
+                    <strong>Word Essential Training (Office 365/Microsoft 365)</strong>
+                    <br>
+                    Issued by Linkedin Learning, Oct 2022 · Expires Oct 2024
+                </li>
+                <li>
+                    <strong>Word Tips and Tricks</strong>
+                    <br>
+                    Issued by Linkedin Learning, Oct 2022 · Expires Oct 2024
+                </li>
+                <li>
+                    <strong>Working with Computers and Devices</strong>
+                    <br>
+                    Issued by Linkedin Learning, Oct 2022 · Expires Oct 2024
+                </li>
+            </ul>
+        </div>
+        </div>
+        </div>
+
+        <div class="tab-content" id="school-content" role="tabpanel">
+            <h2>Educational Background</h2>
+            <div class="education-item">
+                <div class="school-item">
+                <h1">Tertiary Level</h1>
+                <h2>National University Fairview</h2>
+                <p><strong>Program:</strong> Bachelor of Science in Information Technology</p>
+                <p><strong>Timeframe:</strong> 2022 - Current</p>
+                <p><strong>Relevant Coursework:</strong> Web Development, Database Management, Programming Fundamentals</p>
+                <p><strong>Projects:</strong>
+                    <ul>
+                        <li>Developed a personal portfolio website using HTML, CSS, and JavaScript</li>
+                        <li>Collaborated on a team project to create a web-based inventory management system</li>
+                        <li>Collaborated on a team project to create a Thrill/Horror Game</li>
+                        <li>Developed a basic encryption and decryption program using Python</li>
+                    </ul>
+                </p>
+                <p><strong>Academic Achievements:</strong>
+                    <ul>
+                        <li>Awarded Dean's List for outstanding academic performance (Semester 3, 2023)</li>
+                    </ul>
+                </p>
+            </div>
+            <div class="school-item">
+                <h1>Secondary Level</h1>
+                <h2>Mystical Rose School of Caloocan Inc.</h2>
+                <p><strong>Program:</strong>Science, Technology, Engineering, and Mathematics</p>
+                <p><strong>Timeframe:</strong> 2015 - 2022</p>
+                <p><strong>Relevant Coursework:</strong> Web Development, Programming Fundamentals</p>
+                <p><strong>Projects:</strong>
+                    <ul>
+                        <li>Developed a personal portfolio website using HTML, CSS, and JavaScript</li>
+                        <li>Created Simple Webpages using HTML</li>
+                    </ul>
+                </p>
+                <p><strong>Academic Achievements:</strong>
+                    <ul>
+                        <li>Awarded multiple Certificates Of Recognition for Spelling Bee Competitions</li>
+                        <li>Awarded multiple Certificates Of Recognition for Science Quiz Bee Competitions</li>
+                        <li>Awarded multiple Certificates Of Recognition for Math Quiz Bee Competitions</li>
+                        <li>Awarded with a Certificate Of Recognition for multiple Poster Making Contest</li>
+                        <li>Awarded with Honor's from 7th - 12th Grade</li>
+                    </ul>
+                </p>
+            </div>
+            <div class="school-item">
+                <h1>Primary Level</h1>
+                <h2>Mystical Rose School of Caloocan Inc.</h2>
+                <p><strong>Timeframe:</strong> 2011 - 2015</p>
+                <p><strong>Projects:</strong>
+                    <ul>
+                        <li>Created Simple Webpages using HTML</li>
+                    </ul>
+                </p>
+                <p><strong>Academic Achievements:</strong>
+                    <ul>
+                        <li>Awarded multiple Certificates Of Recognition for Spelling Bee Competitions</li>
+                        <li>Awarded multiple Certificates Of Recognition for Science Quiz Bee Competitions</li>
+                        <li>Awarded multiple Certificates Of Recognition for Math Quiz Bee Competitions</li>
+                        <li>Awarded with Honor's from 2nd - 6th Grade</li>
+                    </ul>
+                </p>
+            </div>
+            <div class="school-item">
+                <h2>Colegio de San Gabriel Arcangel</h2>
+                <p><strong>Timeframe:</strong> 2007 - 2011</p>
+                <p><strong>Academic Achievements:</strong>
+                    <ul>
+                        <li>Awarded multiple Certificates Of Recognition for Spelling Bee Competitions</li>
+                        <li>Awarded multiple Certificates Of Recognition for Science Quiz Bee Competitions</li>
+                        <li>Awarded with Honor's in 1st Grade</li>
+                    </ul>
+                </p>
+            </div>
+            </div>
+        </div>
+
+
+        <div class="tab-content" id="hobbies-content" role="tabpanel">
+            <h2>Personal Interests</h2>
+        
+            <div class="hobby-item">
+                <h3>Reading</h3>
+                <p>
+                    I have a profound love for reading, especially in the realms of fantasy, fiction, and adventure. Some of my favorite books include "Mistwalker," "Harry Potter," and "Lord of the Rings." Reading allows me to immerse myself in captivating worlds and stories.
+                </p>
+            </div>
+        
+            <div class="hobby-item">
+                <h3>Gaming</h3>
+                <p>
+                    Gaming is a significant part of my leisure time. I am actively engaged in competitive multiplayer games like Valorant and League of Legends. Additionally, I enjoy the immersive experience of solo games such as God of War and Horizon. Gaming provides a perfect balance of competition and relaxation.
+                </p>
+            </div>
+        
+            <div class="hobby-item">
+                <h3>Puzzles</h3>
+                <p>
+                    Solving puzzles is both a challenging and rewarding hobby for me. I particularly enjoy working with Rubik's Cubes and have even participated in competitions.
+            </div>
+        
+            <div class="hobby-item">
+                <h3>Music Instruments</h3>
+                <p>
+                    Exploring the world of music through instruments is a delightful pastime. I play the Piano, Guitar, and Ukelele for the sheer joy of creating melodies. It's not only a creative outlet but also a therapeutic activity that brings harmony to my life.
+                </p>
+            </div>
+        
+            <div class="hobby-item">
+                <h3>Travelling</h3>
+                <p>
+                    Traveling is one of my cherished hobby that allows me to unwind and discover new perspectives. It serves as a way to the stresses of life, providing opportunities to explore diverse cultures, cuisines, and landscapes.
+                </p>  
+            </div>
+        
+            <div class="hobby-item">
+                <h3>Drawing</h3>
+                <p>
+                    Drawing is a creative outlet I frequently indulge in during my free time. While I mostly focus on traditional art, I occasionally experiment with digital art as well.
+                </p>
+                
+            </div>
+        </div>
+
+        <div class="tab-content" id="gaming-content" role="tabpanel">
+            <h2>Gaming Content</h2>
+        
+            <div class="gaming-item">
+                <p>
+                    As a passionate gamer, I enjoy diving into various gaming worlds, honing my skills, and exploring different genres. Feel free to add me on Discord. Here are some of the games I currently play:
+                </p>
+        
+                <!-- Valorant -->
+                <div class="game-section">
+                    <h3>Valorant</h3>
+                    <div class="media-container">
+                        <iframe width="560" height="315" src="Valorant.mp4" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <p>
+                        Valorant is currently my favorite game, my Highest Rank is Ascendant 1 <br> My main agents are Killjoy, Raze, and Sova. (Video Clip is from when i was Gold 2)
+                    </p>
+                    <p><strong>Gaming Tag:</strong> DaTortilla #SLUSH</p>
+                </div>
+        
+                <!-- League of Legends -->
+                <div class="game-section">
+                    <h3>League of Legends</h3>
+                    <div class="media-container">
+                        <iframe width="560" height="315" src="LoL.mp4" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <p>
+                        League of Legends is probably my most played game, I've been playing since season 6.<br>My highest Rank is Diamond 1I mostly play Mid, Top, And Jungle. I main Katarina, Shaco, Teemo
+                    </p>
+                    <p><strong>Gaming Tag:</strong> Ceejay #CREAM</p>
+                </div>
+
+                <div class="game-section">
+                    <h3>Teamfight Tactics</h3>                    
+                    <div class="media-container">
+                        <img src="TFT.png" alt="Teamfight Tactics" width="560" height="315"></a>
+                    </div>      
+                    <p>
+                        TeamFight Tactics is a game I play mostly to keep my mind busy, <br>My highest Rank is Grandmaster way back in Season 6. But now I play it casually.
+                    </p>    
+                    <p><strong>Gaming Tag:</strong> Ceejay #CREAM</p>
+                </div>
+        
+                <div class="game-section">
+                    <h3>Lethal Company</h3>
+            
+                    <div class="media-container">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/CQdfxKNtsW4" title="A Normal Day in Lethal Company" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>      
+                    <p>
+                        TeamFight Tactics is a game I play mostly to keep my mind busy, <br>My highest Rank is Grandmaster way back in Season 6. But now I play it casually.
+                    </p>    
+                    <p><strong>Gaming Tag:</strong> Ceejay #CREAM</p>
+                </div>
+        
+                <div class="game-section">
+                    <h3>Debug By Daylight</h3>
+                    <div class="media-container">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/h5SZTR5dgb0" title="Debug by Daylight Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <p>
+                        Apart from playing popular titles, My Friends and I developed a Thriller/Horror game.<br> Where the objective is to get out of the campus in the middle of the night, but in order to do that you must debug codes while hiding and running away from a monster.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    <script>
+        function showTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            document.getElementById(tabName + '-content').classList.add('active');
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active-tab'));
+            document.querySelector('.tab[onclick="showTab(\'' + tabName + '\')"]').classList.add('active-tab');
+
+            // Reset the slide animation
+            document.querySelector('.slide').style.transform = 'translateX(0)';
+
+            // Trigger the slide animation after a small delay
+            setTimeout(() => {
+                document.querySelector('.slide').style.transform = 'translateX(100%)';
+            }, 10);
+        }
+    </script>
+</body>
+</html>
